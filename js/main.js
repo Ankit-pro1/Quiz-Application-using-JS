@@ -6,6 +6,7 @@ let exitBtn = infoBox.querySelector(".infoButtons .quit");
 let continueBtn = infoBox.querySelector(".infoButtons .restart");
 let quizBox = document.querySelector(".quizBox");
 let nextQue = quizBox.querySelector(".nextQue");
+let optionList = document.querySelector(".optionList");
 
 // if start button clicked -- info box will appear
 startBtn.onclick=()=>{
@@ -41,7 +42,7 @@ nextQue.onclick=()=>{
 
 showQuestion = (index) => {
     let queTxt = document.querySelector(".queTxt");
-    let optionList = document.querySelector(".optionList");
+    
 
     let queTag = `<span>`+question[index].num+`.`+question[index].question+`</span>`;
     let optTag = `<div class="option">`+question[index].option[0]+`<span></span></div>`
@@ -57,16 +58,34 @@ showQuestion = (index) => {
         option[i].setAttribute("onclick", "optionSelected(this)");
     }
 }
+
+let tickIcon = `<div class="icon tick"><i class="fa-sharp fa-solid fa-check"></i></div>`;
+let crossIcon = ` <div class="icon cross"><i class="fa-sharp fa-solid fa-xmark"></i></i></div>`;
+
 // 
 function optionSelected(answer){
     let userAns = answer.textContent;
     let correctAns = question[queCount].answer;
+    let allOptions = optionList.children.length;
+
     if(userAns == correctAns){
         answer.classList.add("correct");
-        console.log("Answer is correct");
+        console.log("Answer is right");
+        answer.insertAdjacentHTML("beforeend", tickIcon);
     }else{
-        console.log("Answer is incorrect");
         answer.classList.add("incorrect");
+        console.log("Answer is wrong");
+        answer.insertAdjacentHTML("beforeend", crossIcon);
+        for(let i = 0; i< allOptions; i++){
+            if( optionList.children[i].textContent == correctAns){
+                optionList.children[i].setAttribute("class", "option correct");
+                optionList.children[i].insertAdjacentHTML("beforeend", tickIcon);
+            }
+        }
+    }
+
+    for(let i=0; i < allOptions; i++){
+        optionList.children[i].classList.add("disable");
     }
 }
 

@@ -176,7 +176,7 @@ body{
 .quizBox section .optionList .option .icon.tick{
     color: #23903c;
     border-color: #23903c;
-    background-color: #d4edda;
+    background-color: #abe4b8;
 }
 .quizBox section .optionList .option .icon.cross{
     color: #a42834;
@@ -192,6 +192,9 @@ body{
     color: #a42834;
     border-color: #a42834;
     background-color: #f8d7da;
+}
+.quizBox section .optionList .option.disable{
+    pointer-events: none;
 }
 .quizBox footer{
     display: flex;
