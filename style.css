@@ -183,6 +183,16 @@ body{
     border-color: #a42834;
     background-color: #f8d7da;
 }
+.quizBox section .optionList .option.correct{
+    color: #23903c;
+    border-color: #23903c;
+    background-color: #d4edda;
+}
+.quizBox section .optionList .option.incorrect{
+    color: #a42834;
+    border-color: #a42834;
+    background-color: #f8d7da;
+}
 .quizBox footer{
     display: flex;
     justify-content: space-between;
