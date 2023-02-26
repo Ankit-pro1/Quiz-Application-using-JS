@@ -1,0 +1,242 @@
+/* import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body{
+    background-color: #007bff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+/* Start Button */
+.startBtn,.infoBox,.quizBox,.resultBox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.startBtn button{
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Info Box */
+.infoBox{
+    background-color: #fff;
+    width: 480px;
+    border-radius: 6px;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9)
+}
+.infoBox.active{
+    z-index: 5;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+.infoBox .infoTitle{
+    padding: 14px 14px;
+    border: 1px solid gray;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.infoBox .infoList{
+    padding: 10px 14px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+}
+.infoBox .infoList .info{
+    line-height: 26px;
+}
+.infoBox .infoList div span{
+    color: #007bff;
+    font-weight: 500;
+}
+
+.infoBox .infoButtons{
+    display: flex;
+    justify-content: right;
+    padding: 0 14px 10px 0;
+}
+.infoBox .infoButtons button, .resultBox .buttons button{
+    outline: none;
+    padding: 4px 14px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s linear;
+}
+.infoBox .infoButtons .quit, .resultBox .buttons .quit{
+    background-color: #fff;
+    color: #007bff;
+    border: 2px solid #007bff;
+    margin-right: 4px;
+}
+.infoBox .infoButtons .quit:hover,.resultBox .buttons .quit:hover{
+    background-color: #007bff;
+    color: #fff;
+}
+.infoBox .infoButtons .restart, .resultBox .buttons .restart{
+    background-color: #007bff;
+    color: #fff;
+    border: 2px solid #007bff;
+}
+.infoBox .infoButtons .restart:hover, .resultBox .buttons .restart:hover{
+    background-color: #0449d4;
+    border: 2px solid #0449d4;
+}
+
+/* Quix Box */
+.quizBox{
+    background-color: #fff;
+    width: 480px;
+    border-radius: 6px;
+    z-index: 6;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9)
+}
+.quizBox.active{
+    z-index: 6;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1)
+}
+.quizBox header{
+    padding: 14px 14px;
+    border-bottom: 2px solid rgb(200, 200, 200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.quizBox header .title{
+    font-weight: 600;
+}
+.quizBox header .timer{
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+    background: #daedfd;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+.quizBox header .timer .timerSec{
+    background-color: #000;
+    color: #fff;
+    font-weight: 500;
+    padding: 0px 10px;
+    border-radius: 4px;
+}
+.quizBox section{
+    padding: 14px 14px;
+}
+.quizBox section .queTxt span{
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+.quizBox section .optionList .option{
+    background-color: aliceblue;
+    margin-bottom: 8px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #b0d9fa;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.quizBox section .optionList .option:hover{
+    border-color: #008cff;
+}
+.quizBox section .optionList .option .icon{
+    border: 2px solid transparent;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.quizBox section .optionList .option .icon.tick{
+    color: #23903c;
+    border-color: #23903c;
+    background-color: #d4edda;
+}
+.quizBox section .optionList .option .icon.cross{
+    color: #a42834;
+    border-color: #a42834;
+    background-color: #f8d7da;
+}
+.quizBox footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+}
+.quizBox footer .remaingQue p span{
+    font-weight: 600;
+}
+.quizBox footer .nextQue{
+    outline: none;
+    padding: 4px 14px;
+    background-color: #0449d4;
+    border: 2px solid #0449d4;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s linear;
+}
+
+
+/* Result Box */
+.resultBox{
+    background-color: #fff;
+    width: 380px;
+    border-radius: 6px;
+    padding: 40px;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9)
+}
+.resultBox .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 120px;
+    color: #0449d4;
+}
+.resultBox .completeTxt{
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 6px;
+}
+.resultBox .scoreTxt{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.resultBox .scoreTxt span p{
+   display: inline-block;
+   margin-bottom: 20px;
+}
+.resultBox .buttons{
+    text-align: center;
+}
