@@ -240,3 +240,12 @@ body{
 .resultBox .buttons{
     text-align: center;
 }
+
+
+/* Media Query */
+
+@media screen and (max-width: 572px) {
+    .infoBox, .quizBox, .resultBox{
+        width: 360px;
+    }
+}
