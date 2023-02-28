@@ -7,6 +7,8 @@ let continueBtn = infoBox.querySelector(".infoButtons .restart");
 let quizBox = document.querySelector(".quizBox");
 let nextQue = quizBox.querySelector(".nextQue");
 let optionList = document.querySelector(".optionList");
+let timerSec = document.querySelector(".timer .timerSec");
+let timeLine = document.querySelector("header .timeLine");
 
 // if start button clicked -- info box will appear
 startBtn.onclick=()=>{
@@ -24,9 +26,15 @@ continueBtn.onclick=()=>{
     quizBox.classList.add("active");
     showQuestion(0);
     queCounter(1);
+    startTimer(15);
+    startTimeLine(0);
 }
 let queCount = 0;
 let queNum = 1;
+let counter;
+let timeValue = 15;
+let counterLine;
+let startTimeLineValue = 0;
 
 // if next button clicked
 nextQue.onclick=()=>{
@@ -35,6 +43,10 @@ nextQue.onclick=()=>{
         queNum++;
         showQuestion(queCount);
         queCounter(queNum);
+        clearTimeout(counter);
+        clearInterval(counterLine);
+        startTimer(timeValue);
+        startTimeLine(startTimeLineValue);
     }else{
         console.log("Question completed");
     }
@@ -45,6 +57,7 @@ showQuestion = (index) => {
     
 
     let queTag = `<span>`+question[index].num+`.`+question[index].question+`</span>`;
+
     let optTag = `<div class="option">`+question[index].option[0]+`<span></span></div>`
                 +`<div class="option">`+question[index].option[1]+`<span></span></div>`
                 +`<div class="option">`+question[index].option[2]+`<span></span></div>`
@@ -62,8 +75,9 @@ showQuestion = (index) => {
 let tickIcon = `<div class="icon tick"><i class="fa-sharp fa-solid fa-check"></i></div>`;
 let crossIcon = ` <div class="icon cross"><i class="fa-sharp fa-solid fa-xmark"></i></i></div>`;
 
-// 
 function optionSelected(answer){
+    clearTimeout(counter);
+    clearTimeout(counterLine);
     let userAns = answer.textContent;
     let correctAns = question[queCount].answer;
     let allOptions = optionList.children.length;
@@ -76,7 +90,7 @@ function optionSelected(answer){
         answer.classList.add("incorrect");
         console.log("Answer is wrong");
         answer.insertAdjacentHTML("beforeend", crossIcon);
-        for(let i = 0; i< allOptions; i++){
+        for(let i = 0; i < allOptions; i++){
             if( optionList.children[i].textContent == correctAns){
                 optionList.children[i].setAttribute("class", "option correct");
                 optionList.children[i].insertAdjacentHTML("beforeend", tickIcon);
@@ -96,3 +110,34 @@ queCounter = (index) => {
     remaingQue.innerHTML = remaingQueTag;
 }
 
+// Timer function
+startTimer = (time) => {
+    counter = setInterval(timer, 1000);
+    function timer(){
+        timerSec.textContent = time;
+        time--;
+        if(time < 9){
+            let addZero = timerSec.textContent;
+            timerSec.textContent = "0" + addZero;
+        }
+        if(time < 0){
+            timerSec.textContent = "00";
+            clearInterval(counter);
+            let allOptions = optionList.children.length;
+            for(let i=0; i < allOptions; i++){
+                optionList.children[i].classList.add("disable");
+            }
+        }
+    }
+}
+
+function startTimeLine(time){
+    counterLine = setInterval(timer, 25);
+    function timer(){
+        time++;
+        timeLine.style.width = time + "px";
+        if(time > 480){
+            clearInterval(counterLine);
+        }
+    }
+}

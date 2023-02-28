@@ -116,6 +116,7 @@ body{
     transform: translate(-50%, -50%) scale(1)
 }
 .quizBox header{
+    position: relative;
     padding: 14px 14px;
     border-bottom: 2px solid rgb(200, 200, 200);
     display: flex;
@@ -137,8 +138,17 @@ body{
     background-color: #000;
     color: #fff;
     font-weight: 500;
-    padding: 0px 10px;
     border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+.quizBox header .timeLine{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #0449d4;
+    /* width: 50%; */
+    height: 3px;
 }
 .quizBox section{
     padding: 14px 14px;
