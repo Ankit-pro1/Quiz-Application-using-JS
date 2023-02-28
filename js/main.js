@@ -132,12 +132,19 @@ startTimer = (time) => {
 }
 
 function startTimeLine(time){
-    counterLine = setInterval(timer, 25);
+    counterLine = setInterval(timer, 45);
     function timer(){
         time++;
         timeLine.style.width = time + "px";
-        if(time > 480){
-            clearInterval(counterLine);
+
+        if(screen.width < 572){
+            if(time > 360){
+                clearInterval(counterLine);
+            }
+        }else{
+            if(time > 480){
+                clearInterval(counterLine);
+            }
         }
     }
 }
