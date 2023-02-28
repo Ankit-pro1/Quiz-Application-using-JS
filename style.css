@@ -142,14 +142,14 @@ body{
     width: 30px;
     text-align: center;
 }
-.quizBox header .timeLine{
+/* .quizBox header .timeLine{
     position: absolute;
     bottom: 0;
     left: 0;
     background-color: #0449d4;
-    /* width: 50%; */
+    width: 50%;
     height: 3px;
-}
+} */
 .quizBox section{
     padding: 14px 14px;
 }
@@ -216,6 +216,7 @@ body{
     font-weight: 600;
 }
 .quizBox footer .nextQue{
+    display: none;
     outline: none;
     padding: 4px 14px;
     background-color: #0449d4;
@@ -238,6 +239,12 @@ body{
     opacity: 0;
     pointer-events: none;
     transform: translate(-50%, -50%) scale(0.9)
+}
+.resultBox.active{
+    z-index: 6;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1)
 }
 .resultBox .icon{
     display: flex;
@@ -269,6 +276,6 @@ body{
 
 @media screen and (max-width: 572px) {
     .infoBox, .quizBox, .resultBox{
-        width: 360px;
+        width: 370px;
     }
 }
